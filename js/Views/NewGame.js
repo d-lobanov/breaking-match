@@ -1,5 +1,5 @@
 import BaseView from "./BaseView.js";
-import newGame from "../Templates/new-game.js";
+import new_game from "../Templates/new-game.js";
 import Storage from "../Services/Storage.js";
 import redirect from "../Services/redirect.js";
 
@@ -22,14 +22,17 @@ export default class NewGame extends BaseView {
     constructor() {
         super();
 
-        this.template = newGame;
+        this.template = new_game;
     }
 
     render() {
         let element = super.render();
 
-        this.checkSelector(element, 'complexity-' + this.getPreviousComplexity());
-        this.checkSelector(element, this.getPreviousBack());
+        const previousComplexity = Storage.get('complexity', 'medium');
+        const previousBack = Storage.get('card-back', 'back-1');
+
+        this.checkSelector(element, 'complexity-' + previousComplexity);
+        this.checkSelector(element, previousBack);
 
         return element;
     }
@@ -42,19 +45,12 @@ export default class NewGame extends BaseView {
         }
     }
 
-    getPreviousComplexity() {
-        return Storage.get('complexity', 'medium');
-    }
-
-    getPreviousBack() {
-        return Storage.get('card-back', 'back-1');
-    }
-
     onComplexityClick(e) {
         const value = e.target.value;
         const complexity = COMPLEXITY_MAPPING[value];
 
         Storage.set('complexity', value);
+
         Storage.set('rows', complexity.rows);
         Storage.set('columns', complexity.columns);
     }

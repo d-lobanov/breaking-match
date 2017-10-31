@@ -8,7 +8,7 @@ export default class Storage {
     static get (key, defaultValue = null) {
         let value = localStorage.getItem(PREFIX + key);
 
-        if (typeof value !== 'undefined' && value) {
+        if (typeof value !== 'undefined' && value !== 'undefined' && value) {
             return JSON.parse(value);
         }
 

@@ -1,3 +1,5 @@
+import Application from "../Application.js";
+
 export default function redirect(action) {
-    document.location.href = `?action=${action}`;
+    Application.redirect(action);
 }

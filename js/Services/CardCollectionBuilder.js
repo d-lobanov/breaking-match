@@ -1,6 +1,5 @@
 import CardCollection from "../Collection/CardCollection.js";
 import Card from "../Model/Card.js";
-import shuffle from "./shuffle.js";
 import Storage from "./Storage.js";
 
 const MAXIMUM_CARD_FRONT_NUMBER = 13;
@@ -54,6 +53,15 @@ export default class CardCollectionBuilder {
 
         styles = styles.concat(styles);
 
-        return shuffle(styles);
+        return this.shuffle(styles);
+    }
+
+    shuffle(a) {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+
+        return a;
     }
 }

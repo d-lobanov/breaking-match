@@ -1,5 +1,4 @@
 import BaseStatement from "./BaseStatement.js";
-import trim from "../../Services/trim.js";
 
 const TAG_NAME = 'bm-if';
 
@@ -14,9 +13,8 @@ export default class If extends BaseStatement {
 
     process(element, data) {
         let statement = element.getAttribute('statement');
-        const index = trim(statement, '!');
 
-        let result = Boolean(data.get(index));
+        let result = !!data.get(statement.replace(/^!/, ''));
 
         if (statement[0] === '!' ? result : !result) {
             element.remove();

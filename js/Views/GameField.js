@@ -1,29 +1,33 @@
 import BaseView from "./BaseView.js";
 import msToTime from "../Services/msToTime.js";
-import gameField from "../Templates/game.js";
+import game_field from "../Templates/game-field.js";
 import redirect from "../Services/redirect.js";
 import Storage from "../Services/Storage.js";
 
 const TIME_INCREMENT = 100;
 const CARD_FADE_TIMEOUT = 800;
 
-export default class Game extends BaseView {
+export default class GameField extends BaseView {
     constructor(cardCollection) {
         super({
-            'rows': cardCollection.getGrid(),
+            'cards': cardCollection.cards,
             'card-back': Storage.get('card-back', 'back-0')
         });
 
-        this.template = gameField;
-        this.miliseconds = Storage.get('time', 0);
+        this.template = game_field;
+
         this.cards = cardCollection;
-        this.blocked = false;
-        this.clicks = Storage.get('clicks', 0);
         this.numberOfRemainingCards = cardCollection.numberOfRemainingCards;
+
+        this.blocked = false;
+
+        this.clicks = Storage.get('clicks', 0);
+        this.miliseconds = Storage.get('time', 0);
     }
 
     render() {
         setInterval(this.updateStopwatch.bind(this), TIME_INCREMENT);
+
         this.checkIfGameFinished();
 
         return super.render();

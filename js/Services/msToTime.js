@@ -5,7 +5,7 @@ function pad(n) {
 export default function msToTime(time) {
     let ms = ((time % 1000) / 100).toFixed(0);
     let seconds = ((time / 1000) % 60).toFixed(0);
-    let mins = Math.floor(time / 1000 / 60);
+    let minutes = Math.floor(time / 1000 / 60);
 
-    return pad(mins) + ':' + pad(seconds) + '.' + ms;
+    return pad(minutes) + ':' + pad(seconds) + '.' + ms;
 }
