@@ -26,7 +26,7 @@ export default class CardElement {
     }
 
     isOpen() {
-        this.element.classList.contains(FLIPPED_CLASS);
+        return this.element.classList.contains(FLIPPED_CLASS);
     }
 
     isPair(cardElement) {

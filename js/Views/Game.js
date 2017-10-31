@@ -81,7 +81,6 @@ export default class Game extends BaseView {
         }, CARD_FADE_TIMEOUT);
     }
 
-
     checkIfGameFinished() {
         if (this.numberOfRemainingCards <= 0) {
             Storage.set('time', 0);
@@ -94,5 +93,9 @@ export default class Game extends BaseView {
                 redirect('new-game');
             }, CARD_FADE_TIMEOUT);
         }
+    }
+
+    onNewGameClick () {
+        redirect('new-game');
     }
 }

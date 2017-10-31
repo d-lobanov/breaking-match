@@ -1,5 +1,8 @@
 const template = `
-    <div class="clock"><span bm-bval="time"></span></div>
+    <div class="clock">
+        <span bm-bval="time"></span>
+        <button type="button" bm-click="onNewGameClick">New Game</button>
+    </div>
     <div bm-for="row in rows" class="row">
         <section bm-for="card in row" class="card-container">
             <bm-if statement="!card.removed">
