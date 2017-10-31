@@ -24,7 +24,7 @@ export default class CardCollectionBuilder {
 
         const cards = this.getCards(rows, columns, CARD_FRONT_PREFIX);
 
-        return new CardCollection(cards);
+        return new CardCollection(cards, columns);
     }
 
     getCards(rows, columns, prefix = 'card-front-') {
@@ -35,7 +35,7 @@ export default class CardCollectionBuilder {
 
         for (let row = 0; row < rows; row++) {
             for (let column = 0; column < columns; column++) {
-                data.push(new Card(row, column, styles.pop()));
+                data.push(new Card(row + '-' + column, styles.pop()));
             }
         }
 

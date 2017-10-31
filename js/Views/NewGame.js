@@ -62,6 +62,6 @@ export default class NewGame extends BaseView {
     onSubmit() {
         Storage.resetGameData();
 
-        redirect('game');
+        redirect('card-table');
     }
 }

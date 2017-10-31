@@ -2,8 +2,8 @@ import GameController from "./Controllers/GameController.js";
 import Storage from "./Services/Storage.js";
 
 const routes = {
-    'game': GameController.index,
-    'new-game': GameController.create
+    'card-table': GameController.showCardTable,
+    'new-game': GameController.newGame
 };
 
 class Application {
@@ -33,10 +33,12 @@ class Application {
     renderContainer() {
         const controllerCallback = this.resolveController();
 
-        const view = controllerCallback();
+        let content = controllerCallback().render();
+
+        content.classList.add(this.action);
 
         document.getElementById('content').innerHTML = '';
-        document.getElementById('content').appendChild(view.render());
+        document.getElementById('content').appendChild(content);
     }
 }
 

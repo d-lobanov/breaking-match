@@ -1,6 +1,6 @@
 import BaseView from "./BaseView.js";
 import msToTime from "../Services/msToTime.js";
-import game_field from "../Templates/game-field.js";
+import card_table from "../Templates/card-table.js";
 import redirect from "../Services/redirect.js";
 import Storage from "../Services/Storage.js";
 
@@ -11,10 +11,11 @@ export default class GameField extends BaseView {
     constructor(cardCollection) {
         super({
             'cards': cardCollection.cards,
-            'card-back': Storage.get('card-back', 'back-0')
+            'card-back': Storage.get('card-back', 'back-0'),
+            'grid-class': `grid-${cardCollection.columns}-columns`
         });
 
-        this.template = game_field;
+        this.template = card_table;
 
         this.cards = cardCollection;
         this.numberOfRemainingCards = cardCollection.numberOfRemainingCards;

@@ -6,7 +6,6 @@ body, html {
 
 body {
     background: rgba(127, 125, 103, 0.6) url("img/background.jpg") no-repeat center;
-    min-width: 1400px;
     background-size: auto 100%;
 }
 
@@ -25,10 +24,30 @@ body {
     width: 100%;
 }
 
+/* CARD TABLE */
+.card-table .grid {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    margin: 0 auto;
+}
+
+.card-table .grid-4-columns {
+    width: 600px;
+}
+
+.card-table .grid-6-columns {
+    width: 900px;
+}
+
+.card-table .grid-8-columns {
+    min-width: 1200px;
+}
+
 .card-container {
     width: 140px;
     height: 200px;
-    padding: 15px;
+    padding: 12px 5px;
     display: inline-block;
     position: relative;
     -webkit-perspective: 800px;

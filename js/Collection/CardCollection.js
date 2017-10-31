@@ -2,8 +2,9 @@ import CardElement from "../Elements/Card.js";
 import Storage from "../Services/Storage.js";
 
 export default class CardCollection {
-    constructor(cards) {
+    constructor(cards, columns) {
         this.cards = cards;
+        this.columns = columns;
         this.numberOfRemainingCards = cards.filter(card => !card.removed).length;
     }
 
@@ -40,20 +41,5 @@ export default class CardCollection {
 
     store() {
         Storage.set('cards', this.cards);
-    }
-
-    getGrid() {
-        let rows = [];
-
-        for (let i = 0, row, card; i < this.cards.length; i++) {
-            card = this.cards[i];
-
-            row = rows[card.row] || [];
-            row[card.column] = card;
-
-            rows[card.row] = row;
-        }
-
-        return rows;
     }
 }

@@ -1,5 +1,4 @@
 const template = `
-    <div class="logo"></div>
     <div class="selector complexity">
         <input id="complexity-0" type="radio" name="complexity" value="0" bm-click="onComplexityClick"/>
         <label class="img-radio complexity-0" for="complexity-0"></label>
