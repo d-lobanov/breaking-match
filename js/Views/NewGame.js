@@ -9,12 +9,12 @@ const COMPLEXITY_MAPPING = {
         'columns': 4,
     },
     1: {
-        'rows': 4,
-        'columns': 4,
+        'rows': 3,
+        'columns': 6,
     },
     2: {
-        'rows': 4,
-        'columns': 5,
+        'rows': 3,
+        'columns': 8,
     },
 };
 
