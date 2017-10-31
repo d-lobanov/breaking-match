@@ -14,4 +14,10 @@ export default class Storage {
 
         return defaultValue;
     }
+
+    static resetGameData() {
+        Storage.set('time', 0);
+        Storage.set('cards', null);
+        Storage.set('clicks', 0);
+    }
 }

@@ -64,8 +64,7 @@ export default class NewGame extends BaseView {
     }
 
     onSubmit() {
-        Storage.set('cards', null);
-        Storage.set('time', 0);
+        Storage.resetGameData();
 
         redirect('game');
     }

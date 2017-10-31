@@ -18,6 +18,7 @@ export default class Game extends BaseView {
         this.miliseconds = Storage.get('time', 0);
         this.cards = cardCollection;
         this.blocked = false;
+        this.clicks = Storage.get('clicks', 0);
         this.numberOfRemainingCards = cardCollection.numberOfRemainingCards;
     }
 
@@ -38,11 +39,16 @@ export default class Game extends BaseView {
 
     onClick(e) {
         let card = this.cards.getByElement(e.target);
-        let openedCard = this.openedCard;
 
-        if (card.isOpen() || this.blocked) {
-            return;
+        this.clicks++;
+
+        if (!card.isOpen() && !this.blocked) {
+            this.processClick(card);
         }
+    }
+
+    processClick(card) {
+        let openedCard = this.openedCard;
 
         card.open();
 
@@ -83,19 +89,19 @@ export default class Game extends BaseView {
 
     checkIfGameFinished() {
         if (this.numberOfRemainingCards <= 0) {
-            Storage.set('time', 0);
-            Storage.set('cards', null);
+            Storage.resetGameData();
 
             const time = msToTime(this.miliseconds);
+            const clicks = this.clicks;
 
             setTimeout(() => {
-                alert(`Yeah bitch. Your time is ${time}`);
+                alert(`Yeah bitch. Time: ${time}. Number of clicks: ${clicks}.`);
                 redirect('new-game');
             }, CARD_FADE_TIMEOUT);
         }
     }
 
-    onNewGameClick () {
+    onNewGameClick() {
         redirect('new-game');
     }
 }
