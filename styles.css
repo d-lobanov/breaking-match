@@ -1,0 +1,281 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background: url("img/background.jpg") no-repeat;
+    background-size: cover;
+    background-color: #cccccc;
+}
+
+.content {
+    height: 100%;
+    background-color: rgba(127, 125, 103, 0.84);
+}
+
+.content > div {
+    margin: 0 auto;
+    text-align:center;
+    height: 100%;
+}
+
+.row {
+    width: 100%;
+}
+
+.card-container {
+    width: 140px;
+    height: 200px;
+    padding: 15px;
+    display: inline-block;
+    position: relative;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+}
+
+.back-0 {
+    background: url('img/back-0.png') no-repeat center;
+    border-radius: 10px;
+    height: 100%;
+    background-size: contain;
+}
+
+.back-1 {
+    background: url('img/back-1.png') no-repeat center;
+    border-radius: 10px;
+    height: 100%;
+    background-size: contain;
+}
+
+.back-2 {
+    background: url('img/back-3.png') no-repeat center;
+    border-radius: 10px;
+    height: 100%;
+    background-size: contain;
+}
+
+.card-front-0 {
+    background: url('img/0.png') no-repeat;
+    height: 100%;
+    background-size: contain;
+}
+
+.card-front-1 {
+    background: url('img/1.png') no-repeat;
+    height: 100%;
+    background-size: contain;
+}
+
+.card-front-2 {
+    background: url('img/2.png') no-repeat;
+    height: 100%;
+    background-size: contain;
+}
+
+.card-front-3 {
+    background: url('img/3.png') no-repeat;
+    height: 100%;
+    background-size: contain;
+}
+
+.card-front-4 {
+    background: url('img/4.png') no-repeat;
+    height: 100%;
+    background-size: contain;
+}
+
+.card-front-5 {
+    background: url('img/5.png') no-repeat;
+    height: 100%;
+    background-size: contain;
+}
+
+.card-front-6 {
+    background: url('img/6.png') no-repeat;
+    height: 100%;
+    background-size: contain;
+}
+
+.card-front-7 {
+    background: url('img/7.png') no-repeat;
+    height: 100%;
+    background-size: contain;
+}
+
+.container {
+    width: 200px;
+    height: 260px;
+    position: relative;
+    border: 1px solid #ccc;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+}
+
+.card div {
+    border-radius: 20%;
+    display: block;
+    height: 100%;
+    width: 100%;
+    color: white;
+    text-align: center;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card.hidden {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: visibility 0.2s linear,
+    opacity 0.2s linear;
+    -moz-transition: visibility 0.2s linear,
+    opacity 0.2s linear;
+    -o-transition: visibility 0.2s linear,
+    opacity 0.2s linear;
+}
+
+.card .front {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    background-color: #dcdcdc;
+}
+
+.card.flipped {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.visa {
+    background-image: url(http://i.imgur.com/lXzJ1eB.png);
+}
+
+.complexity-0 {
+    background-image: url(./img/complexity-0.png);
+}
+
+.complexity-1 {
+    background-image: url(./img/complexity-1.png);
+}
+
+.complexity-2 {
+    background-image: url(./img/complexity-2.png);
+}
+
+.selector input {
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.selector input:active + .img-radio {
+    opacity: .9;
+}
+
+.selector input:checked + .img-radio {
+    -webkit-filter: none;
+    -moz-filter: none;
+    filter: none;
+}
+
+.img-radio {
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 150px;
+    margin-right: 70px;
+    height: 200px;
+    -webkit-transition: all 100ms ease-in;
+    -moz-transition: all 100ms ease-in;
+    transition: all 100ms ease-in;
+    -webkit-filter: brightness(1) grayscale(.9) opacity(.9);
+    -moz-filter: brightness(1) grayscale(.9) opacity(.9);
+    filter: brightness(1) grayscale(.9) opacity(.9);
+}
+
+.img-radio:last-child {
+    margin-right: 0;
+}
+
+.img-radio:hover {
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+button {
+    border: 0;
+    background-color: #0C693A;
+    box-shadow: none;
+    border-radius: 0px;
+    padding: 8.5px 10px;
+    color: #ffffff;
+    font-size: 100%;
+    font-weight: normal;
+    height: 38px;
+    text-transform: uppercase;
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+button:hover {
+    cursor: pointer;
+    -webkit-transition: all 100ms ease-in;
+    -moz-transition: all 100ms ease-in;
+    transition: all 100ms ease-in;
+    -webkit-filter: brightness(1) opacity(1);
+    -moz-filter: brightness(1) opacity(1);
+    filter: brightness(1) opacity(1);
+}
+
+.logo {
+    width: 100%;
+    height: 250px;
+    padding-bottom: 100px;
+    background: url("img/logo.png") no-repeat center;
+}
+
+.selector.complexity {
+    padding-bottom: 50px;
+}
+
+.selector.back {
+    padding-bottom: 50px;
+}
+
+.clock {
+    height: 50px;
+    padding-top: 18px;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
