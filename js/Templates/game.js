@@ -4,8 +4,8 @@ const template = `
         <section bm-for="card in row" class="card-container">
             <bm-if statement="!card.removed">
                 <div bm-click="onClick" bm-attr="card-id:card.id" class="card">
-                    <div class="back" bm-class="card-back"></div>
                     <div class="front" bm-class="card.type"></div>
+                    <div class="back" bm-class="card-back"></div>
                 </div>
             </bm-if>
         </section>
