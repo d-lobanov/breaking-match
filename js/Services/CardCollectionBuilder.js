@@ -3,7 +3,7 @@ import Card from "../Model/Card.js";
 import shuffle from "./shuffle.js";
 import Storage from "./Storage.js";
 
-const MAXIMUM_CARD_BACK_NUMBER = 7;
+const MAXIMUM_CARD_FRONT_NUMBER = 13;
 const CARD_FRONT_PREFIX = 'card-front-';
 
 export default class CardCollectionBuilder {
@@ -47,7 +47,7 @@ export default class CardCollectionBuilder {
         let styles = [];
 
         for (let i = 0, j = 0; i < count; i++, j++) {
-            j = j > MAXIMUM_CARD_BACK_NUMBER ? 0 : j;
+            j = j > MAXIMUM_CARD_FRONT_NUMBER ? 0 : j;
 
             styles.push(prefix + j);
         }
