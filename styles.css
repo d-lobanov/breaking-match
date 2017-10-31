@@ -145,6 +145,30 @@ body {
     background: url('img/front-7.png');
 }
 
+.card-front-8 {
+    background: url('img/front-8.png');
+}
+
+.card-front-9 {
+    background: url('img/front-9.png');
+}
+
+.card-front-10 {
+    background: url('img/front-10.png');
+}
+
+.card-front-11 {
+    background: url('img/front-11.png');
+}
+
+.card-front-12 {
+    background: url('img/front-12.png');
+}
+
+.card-front-13 {
+    background: url('img/front-13.png');
+}
+
 .container {
     width: 200px;
     height: 260px;
