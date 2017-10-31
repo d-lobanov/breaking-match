@@ -49,7 +49,7 @@ export default class CardCollectionBuilder {
         for (let i = 0, j = 0; i < count; i++, j++) {
             j = j > MAXIMUM_CARD_BACK_NUMBER ? 0 : j;
 
-            styles.push(prefix + '1');
+            styles.push(prefix + j);
         }
 
         styles = styles.concat(styles);
