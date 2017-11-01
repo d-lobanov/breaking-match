@@ -3,20 +3,27 @@ import new_game from "../Templates/new-game.js";
 import redirect from "../Services/redirect.js";
 import Storage from "../Services/Storage.js";
 
-const COMPLEXITY_MAPPING = {
-    0: {
+const COMPLEXITY_MAPPING = [
+    {
+        'id': '0',
         'rows': 3,
         'columns': 4,
     },
-    1: {
+    {
+        'id': '1',
         'rows': 3,
         'columns': 6,
     },
-    2: {
+    {
+        'id': '2',
         'rows': 3,
         'columns': 8,
     },
-};
+];
+
+function getComplexity(id) {
+    return COMPLEXITY_MAPPING.find(i => i.id.toString() === id);
+}
 
 export default class NewGame extends BaseView {
     constructor() {
@@ -42,7 +49,7 @@ export default class NewGame extends BaseView {
         this.switchActiveComplexity(complexityId);
 
         Storage.set('card-back', backStyle);
-        Storage.set('complexity', COMPLEXITY_MAPPING[complexityId]);
+        Storage.set('complexity', getComplexity(complexityId));
 
         return element;
     }
@@ -80,12 +87,9 @@ export default class NewGame extends BaseView {
     onComplexityClick(e) {
         const id = e.target.parentElement.querySelector('[complexity-id]').getAttribute('complexity-id');
 
-        let value = COMPLEXITY_MAPPING[id];
-        value.id = id;
-
         this.switchActiveComplexity(id);
 
-        Storage.set('complexity', COMPLEXITY_MAPPING[id]);
+        Storage.set('complexity', getComplexity(id));
     }
 
     onBackClick(e) {
