@@ -13,7 +13,7 @@ html {
     font-family: 'Open Sans', serif;
     font-size: 30px;
     font-weight: normal;
-    min-width: 1200px;
+    min-width: 1220px;
     min-height: 750px;
 }
 
@@ -75,7 +75,7 @@ li:before {
 }
 
 .card-table .grid-8-columns {
-    width: 1200px;
+    width: 1220px;
 }
 
 .card-container {
