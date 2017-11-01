@@ -3,7 +3,7 @@ import Card from "../Model/Card.js";
 import Storage from "./Storage.js";
 
 const MAXIMUM_CARD_FRONT_NUMBER = 13;
-const CARD_FRONT_PREFIX = 'card-front-';
+const CARD_FRONT_PREFIX = 'front-';
 
 export default class CardCollectionBuilder {
     restoreOrBuild() {

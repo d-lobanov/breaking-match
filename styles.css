@@ -5,7 +5,7 @@ body, html {
 }
 
 html {
-    background: url("img/background.jpg") no-repeat center center fixed;
+    background: #b0ae8b url('img/background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -19,6 +19,18 @@ html {
 
 ul, ol, li, h2, figure {
     margin: 0;
+}
+
+.content {
+    background-color: rgba(127, 125, 103, 0.6);
+    height: calc(100% - 20px);
+    padding-top: 20px;
+}
+
+.content > div {
+    margin: 0 auto;
+    text-align: center;
+    height: 100%;
 }
 
 h2 {
@@ -47,16 +59,59 @@ li:before {
     text-shadow: 0 0 7px #000000;
 }
 
-.content {
-    background-color: rgba(127, 125, 103, 0.6);
-    height: calc(100% - 20px);
-    padding-top: 20px;
+.new-game .grid {
+    display: flex;
+    justify-content: space-evenly;
+    width: 800px;
+    margin: 0 auto;
+    padding-bottom: 35px;
+    padding-top: 15px;
 }
 
-.content > div {
-    margin: 0 auto;
-    text-align: center;
-    height: 100%;
+.selector {
+    cursor: pointer;
+    -webkit-transition: all 100ms ease-in;
+    -moz-transition: all 100ms ease-in;
+    transition: all 100ms ease-in;
+    color: black;
+    text-transform: lowercase;
+    -webkit-filter: brightness(1) grayscale(.9) opacity(.9);
+    -moz-filter: brightness(1) grayscale(.9) opacity(.9);
+    filter: brightness(1) grayscale(.9) opacity(.9);
+}
+
+.selector:hover {
+    color: rgba(255, 222, 31, 0.8);
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+    filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+.selector.selected {
+    filter: none;
+    color: rgba(255, 222, 31, 0.8);
+}
+
+.complexity {
+    width: 140px;
+    height: 150px;
+    display: inline-block;
+    background: url('./img/sprite.png') no-repeat center;
+    overflow: hidden;
+    text-indent: -9999px;
+    text-align: left;
+}
+
+.complexity-0 {
+    background-position: -420px -0px;
+}
+
+.complexity-1 {
+    background-position: -420px -150px;
+}
+
+.complexity-2 {
+    background-position: -0px -200px;
 }
 
 .card-table .grid {
@@ -119,29 +174,37 @@ li:before {
 
 .card .back {
     background-size: cover;
-    background-repeat: no-repeat;
+    background: url('./img/sprite.png') no-repeat;
+}
+
+.card .card-back-0 {
+    background-position: -0px -0px;
+}
+
+.card .card-back-1 {
+    background-position: -140px -0px;
+}
+
+.card .card-back-2 {
+    background-position: -280px -0px;
 }
 
 .card .front {
     background-size: contain;
-    background-repeat: no-repeat;
-    background-color: #ffffff;
-    background-position: center center;
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
+    overflow: hidden;
+    background: white url('./img/sprite.png') no-repeat;
 }
 
 .card.hidden .front {
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: visibility 0.3s linear,
-    opacity 0.3s linear;
-    -moz-transition: visibility 0.3s linear,
-    opacity 0.3s linear;
-    -o-transition: visibility 0.3s linear,
-    opacity 0.3s linear;
+    -webkit-transition: visibility 0.3s linear, opacity 0.3s linear;
+    -moz-transition: visibility 0.3s linear, opacity 0.3s linear;
+    -o-transition: visibility 0.3s linear, opacity 0.3s linear;
 }
 
 .card.flipped {
@@ -151,133 +214,60 @@ li:before {
     transform: rotateY(180deg);
 }
 
-.card-back-0 {
-    background: url('img/back-0.png') no-repeat center;
+.card .front-0 {
+    background-position: -140px -200px;
 }
 
-.card-back-1 {
-    background: url('img/back-1.png') no-repeat center;
+.card .front-1 {
+    background-position: -280px -200px;
 }
 
-.card-back-2 {
-    background: url('img/back-3.png') no-repeat center;
+.card .front-2 {
+    background-position: -420px -500px;
 }
 
-.card-front-0 {
-    background: url('img/front-0.png');
+.card .front-3 {
+    background-position: -0px -550px;
 }
 
-.card-front-1 {
-    background: url('img/front-1.png');
+.card .front-4 {
+    background-position: -140px -600px;
 }
 
-.card-front-2 {
-    background: url('img/front-2.png');
+.card .front-5 {
+    background-position: -280px -600px;
 }
 
-.card-front-3 {
-    background: url('img/front-3.png');
+.card .front-6 {
+    background-position: -420px -700px;
 }
 
-.card-front-4 {
-    background: url('img/front-4.png');
+.card .front-7 {
+    background-position: -0px -750px;
 }
 
-.card-front-5 {
-    background: url('img/front-5.png');
+.card .front-8 {
+    background-position: -140px -800px;
 }
 
-.card-front-6 {
-    background: url('img/front-6.png');
+.card .front-9 {
+    background-position: -280px -800px;
 }
 
-.card-front-7 {
-    background: url('img/front-7.png');
+.card .front-10 {
+    background-position: -420px -300px;
 }
 
-.card-front-8 {
-    background: url('img/front-8.png');
+.card .front-11 {
+    background-position: -0px -350px;
 }
 
-.card-front-9 {
-    background: url('img/front-9.png');
+.card .front-12 {
+    background-position: -140px -400px;
 }
 
-.card-front-10 {
-    background: url('img/front-10.png');
-}
-
-.card-front-11 {
-    background: url('img/front-11.png');
-}
-
-.card-front-12 {
-    background: url('img/front-12.png');
-}
-
-.card-front-13 {
-    background: url('img/front-13.png');
-}
-
-.new-game .grid {
-    display: flex;
-    justify-content: space-evenly;
-    width: 800px;
-    margin: 0 auto;
-    padding-bottom: 35px;
-    padding-top: 15px;
-}
-
-.selector {
-    cursor: pointer;
-    -webkit-transition: all 100ms ease-in;
-    -moz-transition: all 100ms ease-in;
-    transition: all 100ms ease-in;
-    color: black;
-    text-transform: lowercase;
-    -webkit-filter: brightness(1) grayscale(.9) opacity(.9);
-    -moz-filter: brightness(1) grayscale(.9) opacity(.9);
-    filter: brightness(1) grayscale(.9) opacity(.9);
-}
-
-.selector:hover {
-    color: rgba(255, 222, 31, 0.8);
-    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
-    -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
-    filter: brightness(1.2) grayscale(.5) opacity(.9);
-}
-
-.selector.selected {
-    filter: none;
-    color: rgba(255, 222, 31, 0.8);
-}
-
-.complexity {
-    width: 140px;
-    height: 150px;
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: center;
-}
-
-.complexity-0 {
-    background-image: url(./img/complexity-0.png);
-}
-
-.complexity-1 {
-    background-image: url(./img/complexity-1.png);
-}
-
-.complexity-2 {
-    background-image: url(./img/complexity-2.png);
-}
-
-.logo {
-    width: 100%;
-    height: 10px;
-    padding-bottom: 100px;
-    background: url(img/logo.png) no-repeat left;
-    background-size: contain;
+.card .front-13 {
+    background-position: -280px -400px;
 }
 
 .clock {
@@ -292,7 +282,7 @@ li:before {
     color: #ffffff;
     border: 1px solid black;
     box-shadow: 0 0 5px #000000;
-    padding: 3px 0px;
+    padding: 3px 0;
     width: 150px;
     background-color: #a28e1b;;
     -webkit-filter: brightness(1) grayscale(.5) opacity(.9);
