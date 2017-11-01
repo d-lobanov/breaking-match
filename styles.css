@@ -96,22 +96,24 @@ li:before {
     width: 140px;
     height: 150px;
     display: inline-block;
-    background: url('./img/sprite.png') no-repeat center;
     overflow: hidden;
     text-indent: -9999px;
     text-align: left;
 }
 
 .complexity-0 {
-    background-position: -420px -0px;
+    background: url('./img/src/complexity-0.png') no-repeat center;
+    background-size: contain;
 }
 
 .complexity-1 {
-    background-position: -420px -150px;
+    background: url('./img/src/complexity-1.png') no-repeat center;
+    background-size: contain;
 }
 
 .complexity-2 {
-    background-position: -0px -200px;
+    background: url('./img/src/complexity-2.png') no-repeat center;
+    background-size: contain;
 }
 
 .card-table .grid {
@@ -172,31 +174,31 @@ li:before {
     backface-visibility: hidden;
 }
 
-.card .back {
-    background-size: cover;
-    background: url('./img/sprite.png') no-repeat;
-}
-
 .card .card-back-0 {
-    background-position: -0px -0px;
+    background: url(./img/src/back-0.png) no-repeat center;
+    background-size: cover;
 }
 
 .card .card-back-1 {
-    background-position: -140px -0px;
+    background: url(./img/src/back-1.png) no-repeat center;
+    background-size: cover;
 }
 
 .card .card-back-2 {
-    background-position: -280px -0px;
+    background: url(./img/src/back-2.png) no-repeat center;
+    background-size: cover;
 }
 
 .card .front {
+    background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
+    background-color: #ffffff;
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
     overflow: hidden;
-    background: white url('./img/sprite.png') no-repeat;
 }
 
 .card.hidden .front {
@@ -214,60 +216,60 @@ li:before {
     transform: rotateY(180deg);
 }
 
-.card .front-0 {
-    background-position: -140px -200px;
+.front-0 {
+    background: url('img/src/front-0.png');
 }
 
-.card .front-1 {
-    background-position: -280px -200px;
+.front-1 {
+    background: url('img/src/front-1.png');
 }
 
-.card .front-2 {
-    background-position: -420px -500px;
+.front-2 {
+    background: url('img/src/front-2.png');
 }
 
-.card .front-3 {
-    background-position: -0px -550px;
+.front-3 {
+    background: url('img/src/front-3.png');
 }
 
-.card .front-4 {
-    background-position: -140px -600px;
+.front-4 {
+    background: url('img/src/front-4.png');
 }
 
-.card .front-5 {
-    background-position: -280px -600px;
+.front-5 {
+    background: url('img/src/front-5.png');
 }
 
-.card .front-6 {
-    background-position: -420px -700px;
+.front-6 {
+    background: url('img/src/front-6.png');
 }
 
-.card .front-7 {
-    background-position: -0px -750px;
+.front-7 {
+    background: url('img/src/front-7.png');
 }
 
-.card .front-8 {
-    background-position: -140px -800px;
+.front-8 {
+    background: url('img/src/front-8.png');
 }
 
-.card .front-9 {
-    background-position: -280px -800px;
+.front-9 {
+    background: url('img/src/front-9.png');
 }
 
-.card .front-10 {
-    background-position: -420px -300px;
+.front-10 {
+    background: url('img/src/front-10.png');
 }
 
-.card .front-11 {
-    background-position: -0px -350px;
+.front-11 {
+    background: url('img/src/front-11.png');
 }
 
-.card .front-12 {
-    background-position: -140px -400px;
+.front-12 {
+    background: url('img/src/front-12.png');
 }
 
-.card .front-13 {
-    background-position: -280px -400px;
+.front-13 {
+    background: url('img/src/front-13.png');
 }
 
 .clock {
