@@ -49,7 +49,7 @@ li:before {
 
 .content {
     background-color: rgba(127, 125, 103, 0.6);
-    height: 100%;
+    height: calc(100% - 20px);
     padding-top: 20px;
 }
 
