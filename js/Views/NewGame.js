@@ -78,7 +78,7 @@ export default class NewGame extends BaseView {
     }
 
     onComplexityClick(e) {
-        const id = e.target.closest('[complexity-id]').getAttribute('complexity-id');
+        const id = e.target.parentElement.querySelector('[complexity-id]').getAttribute('complexity-id');
 
         let value = COMPLEXITY_MAPPING[id];
         value.id = id;

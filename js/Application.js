@@ -3,12 +3,16 @@ import Storage from "./Services/Storage.js";
 
 const routes = {
     'card-table': GameController.showCardTable,
-    'new-game': GameController.newGame
+    'new-game': GameController.newGame,
+    'index': GameController.index,
+    'rules': GameController.rules,
 };
+
+const DEFAULT_ACTION = 'index';
 
 class Application {
     constructor() {
-        this.action = Storage.get('action', 'new-game');
+        this.action = Storage.get('action', DEFAULT_ACTION);
     }
 
     run() {
@@ -19,12 +23,12 @@ class Application {
         this.action = action;
         this.renderContainer();
 
-        Storage.set('action', this.action = action);
+        Storage.set('action', action);
     }
 
     resolveController() {
         if (!routes[this.action]) {
-            this.action = 'new-game';
+            this.action = DEFAULT_ACTION;
         }
 
         return routes[this.action];
@@ -32,8 +36,13 @@ class Application {
 
     renderContainer() {
         const controllerCallback = this.resolveController();
+        const view = controllerCallback();
 
-        let content = controllerCallback().render();
+        if (!view || typeof view.render !== 'function') {
+            return;
+        }
+
+        let content = view.render();
 
         content.classList.add(this.action);
 

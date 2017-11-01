@@ -1,13 +1,15 @@
 const template = `
-    <div class="complexity-grid" id="complexity-grid">
+    <h2>Level</h2>
+    <div class="grid" id="complexity-grid">
         <figure class="selector" bm-for="item in complexities" bm-click="onComplexityClick">
             <div class="complexity" bm-class="item.style" bm-attr="complexity-id:item.id"></div>
             <figcaption bm-val="item.caption"></figcaption>
         </figure>
     </div>
-    <div class="back-grid" id="back-grid">
-        <figure class="card-container selector" bm-for="style in back-styles" bm-click="onBackClick">
-            <div class="card" bm-attr="back-id:style">
+    <h2>Card back</h2>
+    <div class="grid" id="back-grid">
+        <figure class="card-container selector" bm-for="style in back-styles">
+            <div class="card" bm-attr="back-id:style" bm-click="onBackClick">
                 <div class="back" bm-class="style"></div>
             </div>
         </figure>
