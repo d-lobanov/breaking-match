@@ -1,7 +1,7 @@
 import BaseView from "./BaseView.js";
 import new_game from "../Templates/new-game.js";
-import Storage from "../Services/Storage.js";
 import redirect from "../Services/redirect.js";
+import Storage from "../Services/Storage.js";
 
 const COMPLEXITY_MAPPING = {
     0: {
@@ -35,8 +35,14 @@ export default class NewGame extends BaseView {
     render() {
         let element = super.render();
 
-        this.switchActiveCardBack(Storage.get('card-back', 'card-back-1'));
-        this.switchActiveComplexity(Storage.get('complexity.id', 1));
+        const backStyle = Storage.get('card-back', 'card-back-1');
+        const complexityId = Storage.get('complexity.id', 1);
+
+        this.switchActiveCardBack(backStyle);
+        this.switchActiveComplexity(complexityId);
+
+        Storage.set('card-back', backStyle);
+        Storage.set('complexity', COMPLEXITY_MAPPING[complexityId]);
 
         return element;
     }

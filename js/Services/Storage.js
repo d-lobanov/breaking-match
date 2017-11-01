@@ -1,29 +1,47 @@
 const PREFIX = 'bm-';
 
-export default class Storage {
-    static set (key, value) {
-        localStorage.setItem(PREFIX + key, JSON.stringify(value));
+function jsonParse(val, d) {
+    if (typeof val !== 'undefined' && val !== 'undefined' && val) {
+        return JSON.parse(val);
     }
 
-    static get (key, defaultValue = null) {
+    return d;
+}
+
+class Storage {
+    set (key, value) {
+        localStorage.setItem(PREFIX + key, JSON.stringify(value));
+
+        return this;
+    }
+
+    get (key, defaultValue = null) {
         let path = key.split('.');
 
         key = path.shift();
 
-        let value = localStorage.getItem(PREFIX + key);
+        let value = jsonParse(localStorage.getItem(PREFIX + key), defaultValue);
 
-        if (typeof value !== 'undefined' && value !== 'undefined' && value) {
-            value = JSON.parse(value);
-        } else {
-            value = defaultValue;
+        if (path.length < 1) {
+            return value;
         }
 
-        return path.length > 0 ? path.reduce((res, key) => res[key] || defaultValue, value) : value;
+        for (let i in path) {
+            if (!value) {
+                return defaultValue;
+            }
+
+            value = value[path[i]] || defaultValue;
+        }
+
+        return value;
     }
 
-    static resetGameData() {
-        Storage.set('time', 0);
-        Storage.set('cards', null);
-        Storage.set('clicks', 0);
+    resetGameData() {
+        this.set('time', 0)
+            .set('clicks', 0)
+            .set('cards', null);
     }
 }
+
+export default new Storage();
