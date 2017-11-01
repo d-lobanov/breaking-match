@@ -19,12 +19,12 @@ export default class CardCollectionBuilder {
     }
 
     build() {
-        const rows = Storage.get('rows', 3);
-        const columns = Storage.get('columns', 4);
+        const rows = Storage.get('complexity.rows', 3);
+        const columns = Storage.get('complexity.columns', 4);
 
         const cards = this.getCards(rows, columns, CARD_FRONT_PREFIX);
 
-        return new CardCollection(cards, columns);
+        return new CardCollection(cards);
     }
 
     getCards(rows, columns, prefix = 'card-front-') {

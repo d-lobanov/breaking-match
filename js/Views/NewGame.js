@@ -20,7 +20,14 @@ const COMPLEXITY_MAPPING = {
 
 export default class NewGame extends BaseView {
     constructor() {
-        super();
+        super({
+            'complexities': [
+                {'id': 0, 'style': 'complexity-0', 'caption': '[ 3 x 4 ]'},
+                {'id': 1, 'style': 'complexity-1', 'caption': '[ 3 x 6 ]'},
+                {'id': 2, 'style': 'complexity-2', 'caption': '[ 3 x 8 ]'}
+            ],
+            'back-styles': ['card-back-0', 'card-back-1', 'card-back-2']
+        });
 
         this.template = new_game;
     }
@@ -28,35 +35,59 @@ export default class NewGame extends BaseView {
     render() {
         let element = super.render();
 
-        const previousComplexity = Storage.get('complexity', 'medium');
-        const previousBack = Storage.get('card-back', 'back-1');
-
-        this.checkSelector(element, 'complexity-' + previousComplexity);
-        this.checkSelector(element, previousBack);
+        this.switchActiveCardBack(Storage.get('card-back', 'card-back-1'));
+        this.switchActiveComplexity(Storage.get('complexity.id', 1));
 
         return element;
     }
 
-    checkSelector(element, id) {
-        let radio = id ? element.querySelector('#' + id) : null;
+    switchActiveCardBack(back) {
+        let element = this.element.querySelector(`[back-id=${back}]`);
+        const parent = this.element.querySelector('#back-grid');
 
-        if (radio) {
-            radio.checked = true;
+        this.unCheckAllSelectors(parent);
+        this.checkSelector(element);
+    }
+
+    switchActiveComplexity(complexity) {
+        let element = this.element.querySelector(`[complexity-id='${complexity}']`);
+        const parent = this.element.querySelector('#complexity-grid');
+
+        this.unCheckAllSelectors(parent);
+        this.checkSelector(element);
+    }
+
+    unCheckAllSelectors(parent) {
+        let element = parent.querySelector('.selected');
+
+        if (element) {
+            element.classList.remove('selected');
+        }
+    }
+
+    checkSelector(element) {
+        if (element) {
+            element.closest('figure').classList.add('selected');
         }
     }
 
     onComplexityClick(e) {
-        const value = e.target.value;
-        const complexity = COMPLEXITY_MAPPING[value];
+        const id = e.target.closest('[complexity-id]').getAttribute('complexity-id');
 
-        Storage.set('complexity', value);
+        let value = COMPLEXITY_MAPPING[id];
+        value.id = id;
 
-        Storage.set('rows', complexity.rows);
-        Storage.set('columns', complexity.columns);
+        this.switchActiveComplexity(id);
+
+        Storage.set('complexity', COMPLEXITY_MAPPING[id]);
     }
 
     onBackClick(e) {
-        Storage.set('card-back', e.target.value);
+        const id = e.target.closest('[back-id]').getAttribute('back-id');
+
+        this.switchActiveCardBack(id);
+
+        Storage.set('card-back', id);
     }
 
     onSubmit() {

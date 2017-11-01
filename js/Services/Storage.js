@@ -6,13 +6,19 @@ export default class Storage {
     }
 
     static get (key, defaultValue = null) {
+        let path = key.split('.');
+
+        key = path.shift();
+
         let value = localStorage.getItem(PREFIX + key);
 
         if (typeof value !== 'undefined' && value !== 'undefined' && value) {
-            return JSON.parse(value);
+            value = JSON.parse(value);
+        } else {
+            value = defaultValue;
         }
 
-        return defaultValue;
+        return path.length > 0 ? path.reduce((res, key) => res[key] || defaultValue, value) : value;
     }
 
     static resetGameData() {

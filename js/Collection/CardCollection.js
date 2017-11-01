@@ -2,9 +2,8 @@ import CardElement from "../Elements/Card.js";
 import Storage from "../Services/Storage.js";
 
 export default class CardCollection {
-    constructor(cards, columns) {
+    constructor(cards) {
         this.cards = cards;
-        this.columns = columns;
         this.numberOfRemainingCards = cards.filter(card => !card.removed).length;
     }
 

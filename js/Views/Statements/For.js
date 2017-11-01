@@ -46,7 +46,7 @@ export default class For extends BaseStatement {
 
     getIndexes(element) {
         const value = this.moveAttribute(element, ATTRIBUTE);
-        const match = /(\w+)\s+in\s+(\w+)/g.exec(value);
+        const match = /([\w-]+)\s+in\s+([\w-]+)/g.exec(value);
 
         return [match[1], match[2]];
     }

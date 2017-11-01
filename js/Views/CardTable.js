@@ -8,11 +8,12 @@ const TIME_INCREMENT = 100;
 const CARD_FADE_TIMEOUT = 800;
 
 export default class GameField extends BaseView {
-    constructor(cardCollection) {
+    constructor(cardCollection, data) {
         super({
+            'time': msToTime(data.time),
             'cards': cardCollection.cards,
-            'card-back': Storage.get('card-back', 'back-0'),
-            'grid-class': `grid-${cardCollection.columns}-columns`
+            'card-back-style': data.cardBackStyle,
+            'grid-style': `grid-${data.columns}-columns`
         });
 
         this.template = card_table;
@@ -22,8 +23,8 @@ export default class GameField extends BaseView {
 
         this.blocked = false;
 
-        this.clicks = Storage.get('clicks', 0);
-        this.miliseconds = Storage.get('time', 0);
+        this.clicks = data.clicks;
+        this.miliseconds = data.time;
     }
 
     render() {

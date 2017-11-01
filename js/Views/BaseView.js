@@ -13,6 +13,8 @@ export default class BaseView {
 
         this.data = new Data(data);
 
+        this.element = null;
+
         this.for = new ForStatement(this);
         this.if = new IfStatement(this);
         this.bindValue = new BindValueStatement(this);
@@ -26,6 +28,8 @@ export default class BaseView {
         let element = document.createElement('div');
 
         element.innerHTML = this.template.trim();
+
+        this.element = element;
 
         return this.doRender(element);
     }
