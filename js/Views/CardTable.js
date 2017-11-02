@@ -12,8 +12,7 @@ export default class GameField extends BaseView {
         super({
             'time': msToTime(data.time),
             'cards': cardCollection.cards,
-            'card-back-style': data.cardBackStyle,
-            'grid-style': `grid-${data.columns}-columns`
+            'card-back-style': data.cardBackStyle
         });
 
         this.template = card_table;

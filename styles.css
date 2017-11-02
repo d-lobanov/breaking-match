@@ -118,21 +118,11 @@ li:before {
 
 .card-table .grid {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
+    flex-flow: column wrap;
+    align-items: center;
+    align-content: center;
     margin: 0 auto;
-}
-
-.card-table .grid-4-columns {
-    width: 600px;
-}
-
-.card-table .grid-6-columns {
-    width: 900px;
-}
-
-.card-table .grid-8-columns {
-    width: 1220px;
+    height: 680px;
 }
 
 .card-container {
