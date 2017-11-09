@@ -9,8 +9,6 @@ import CssClass from "./Statements/CssClass.js";
 
 export default class BaseView {
     constructor(data) {
-        this.template = '';
-
         this.data = new Data(data);
 
         this.element = null;
@@ -24,14 +22,22 @@ export default class BaseView {
         this.class = new CssClass(this);
     }
 
+    template() {
+        throw new Error('View must implement this method');
+    }
+
     render() {
         let element = document.createElement('div');
 
-        element.innerHTML = this.template.trim();
+        element.innerHTML = this.template().trim();
 
         this.element = element;
 
         return this.doRender(element);
+    }
+
+    destroy() {
+        this.data.unsubscribeAll();
     }
 
     doRender(element) {

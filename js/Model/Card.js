@@ -1,20 +1,12 @@
 export default class Card {
-    constructor(id, type, opened = false, removed = false) {
-        this.id = id;
+    constructor(id, type, removed = false) {
+        this.id = id.toString();
         this.type = type;
-        this.opened = opened;
         this.removed = removed;
-    }
-
-    static createFromObject(obj) {
-        return new Card(obj.id, obj.type, obj.opened, obj.removed)
+        this.opened = false;
     }
 
     isPair(card) {
         return this.id !== card.id && this.type === card.type;
-    }
-
-    isSame(card) {
-        return this.id === card.id;
     }
 }

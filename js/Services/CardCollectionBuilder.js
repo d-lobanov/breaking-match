@@ -1,67 +1,46 @@
-import CardCollection from "../Collection/CardCollection.js";
 import Card from "../Model/Card.js";
-import Storage from "./Storage.js";
+import GameData from "../Storages/GameData.js";
 
 const MAXIMUM_CARD_FRONT_NUMBER = 12;
 const CARD_FRONT_PREFIX = 'front-';
 
-export default class CardCollectionBuilder {
-    restoreOrBuild() {
-        let cards = Storage.get('cards', null);
-
-        if (cards) {
-            cards = cards.map(obj => Card.createFromObject(obj));
-
-            return new CardCollection(cards);
-        }
-
-        return this.build();
-    }
-
-    build() {
-        const rows = Storage.get('complexity.rows', 3);
-        const columns = Storage.get('complexity.columns', 4);
-
-        const cards = this.getCards(rows, columns, CARD_FRONT_PREFIX);
-
-        return new CardCollection(cards);
-    }
-
-    getCards(rows, columns, prefix = 'card-front-') {
-        let count = (rows * columns / 2).toFixed();
+export class CardCollectionBuilder {
+    build(rows, columns) {
+        const ids = this.getIds(rows * columns);
 
         let data = [];
-        let styles = this.getRandomStyles(count, prefix);
 
-        for (let row = 0; row < rows; row++) {
-            for (let column = 0; column < columns; column++) {
-                data.push(new Card(row + '-' + column, styles.pop()));
-            }
+        for (let i = 0, j = 0; i < ids.length; i += 2) {
+            const style = CARD_FRONT_PREFIX + j;
+            const [firstId, secondId] = [ids[i], ids[i + 1]];
+
+            data[firstId] = new Card(firstId, style);
+            data[secondId] = new Card(secondId, style);
+
+            j = (j + 1) % MAXIMUM_CARD_FRONT_NUMBER;
         }
 
         return data;
     }
 
-    getRandomStyles(count, prefix = 'card-front-') {
-        let styles = [];
+    getIds(count) {
+        const ids = Array.from(new Array(count).keys());
 
-        for (let i = 0, j = 0; i < count; i++, j++) {
-            j = j > MAXIMUM_CARD_FRONT_NUMBER ? 0 : j;
-
-            styles.push(prefix + j);
-        }
-
-        styles = styles.concat(styles);
-
-        return this.shuffle(styles);
+        return this.shuffle(ids);
     }
 
-    shuffle(a) {
-        for (let i = a.length - 1; i > 0; i--) {
+    shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [a[i], a[j]] = [a[j], a[i]];
+            [arr[i], arr[j]] = [arr[j], arr[i]];
         }
 
-        return a;
+        return arr;
     }
+}
+
+export default function build() {
+    const complexity = GameData.complexity;
+
+    return new CardCollectionBuilder().build(complexity.rows(), complexity.columns());
 }

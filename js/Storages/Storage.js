@@ -1,11 +1,11 @@
 const PREFIX = 'bm-';
 
 function jsonParse(val, d) {
-    if (typeof val !== 'undefined' && val !== 'undefined' && val) {
-        return JSON.parse(val);
+    try {
+        return JSON.parse(val) || d;
+    } catch (e) {
+        return d;
     }
-
-    return d;
 }
 
 class Storage {
@@ -35,12 +35,6 @@ class Storage {
         }
 
         return value;
-    }
-
-    resetGameData() {
-        this.set('time', 0)
-            .set('clicks', 0)
-            .set('cards', null);
     }
 }
 

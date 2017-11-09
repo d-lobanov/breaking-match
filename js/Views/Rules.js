@@ -1,18 +1,16 @@
 import BaseView from "./BaseView.js";
 import rules from "../Templates/rules.js";
 import redirect from "../Services/redirect.js";
-import Storage from "../Services/Storage.js";
+import RuleModel from "../Storages/Rules.js";
 
 
 export default class Rules extends BaseView {
-    constructor() {
-        super();
-
-        this.template = rules;
+    template() {
+        return rules;
     }
 
     onSubmit() {
-        Storage.set('rules-were-read', true);
+        RuleModel.markAsRead();
 
         redirect('new-game');
     }

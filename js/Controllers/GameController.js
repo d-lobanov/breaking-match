@@ -1,21 +1,12 @@
 import GameField from '../Views/CardTable.js';
 import NewGame from '../Views/NewGame.js';
-import CardCollectionBuilder from "../Services/CardCollectionBuilder.js";
-import Storage from "../Services/Storage.js";
 import redirect from "../Services/redirect.js";
 import Rules from "../Views/Rules.js";
+import RulesModel from "../Storages/Rules.js";
 
 export default class GameController {
     static showCardTable() {
-        const collection = (new CardCollectionBuilder).restoreOrBuild();
-        const get = Storage.get;
-
-        return new GameField(collection, {
-            'columns': get('complexity.columns'),
-            'cardBackStyle': get('card-back', 'card-back-0'),
-            'time': get('time', 0),
-            'clicks': get('clicks', 0)
-        });
+        return new GameField();
     }
 
     static newGame() {
@@ -23,13 +14,7 @@ export default class GameController {
     }
 
     static index() {
-        if (!Storage.get('rules-were-read', false)) {
-            redirect('rules');
-
-            return;
-        }
-
-        redirect('new-game');
+        RulesModel.areRead() ? redirect('new-game') : redirect('rules');
     }
 
     static rules() {

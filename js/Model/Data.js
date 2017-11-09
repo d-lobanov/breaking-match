@@ -34,6 +34,10 @@ export default class Data {
         this.setterSubscribers[key] = subscribers;
     }
 
+    unsubscribeAll() {
+        this.setterSubscribers = [];
+    }
+
     notifySubscribers(key, value) {
         let subscribers = this.setterSubscribers[key] || [];
 

@@ -9,7 +9,7 @@ export default class CssClass extends BaseStatement {
         for (let i = 0, name; i < items.length; i++) {
             name = this.moveAttribute(items[i], ATTRIBUTE);
 
-            items[i].className += " " + data.get(name);
+            items[i].classList.add(data.get(name));
         }
     }
 }
